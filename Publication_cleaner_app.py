@@ -16,6 +16,10 @@ def clean_publication_name(text):
     # Remove the contents within parentheses
     text = re.sub(r"\(.*?\)", "", text)
     
+    # Check if the text is "Standard.co.uk" and return "standard" if true
+    if text.lower() == "standard.co.uk":
+        return "standard"
+    
     text = re.sub(r"\..*$", "", text)
     text = re.sub(r"[^\w\s-]", "", text).lower()
     text = re.sub(r"\s", "", text)
