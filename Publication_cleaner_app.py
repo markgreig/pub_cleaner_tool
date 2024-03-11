@@ -20,8 +20,10 @@ def clean_publication_name(text):
     text = re.sub(r"[^\w\s-]", "", text).lower()
     text = re.sub(r"\s", "", text)
     
-    # Remove 'and' and hyphens
-    text = re.sub(r"and", "", text)
+    # Remove 'and' except when it appears within the word 'standard'
+    text = re.sub(r"and(?!standard)", "", text)
+    
+    # Remove hyphens
     text = re.sub(r"-", "", text)
     
     # Return None if the cleaned text is empty
